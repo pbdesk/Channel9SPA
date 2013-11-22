@@ -4,8 +4,97 @@
     <head>
         <meta charset="utf-8" />
         <title>Channel9 SPA Demo</title>
+        <link href="//netdna.bootstrapcdn.com/bootswatch/3.0.2/united/bootstrap.min.css" rel="stylesheet">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+        <link href="/styles/animate.css" rel="stylesheet">
+        <link href="/styles/styles.css" rel="stylesheet">
+        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     </head>
     <body>
-        <p>Channel9 SPA Demo</p>
+        <header>
+            <div class="navbar navbar-default navbar-fixed-top">
+              <div class="container">
+                <div class="navbar-header">
+                  <a href="../" class="navbar-brand">Bootswatch</a>
+                  <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                </div>
+                <div class="navbar-collapse collapse" id="navbar-main">
+                  <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                      <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes">Themes <span class="caret"></span></a>
+                      <ul class="dropdown-menu" aria-labelledby="themes">
+                        <li><a tabindex="-1" href="../default/">Default</a></li>
+                        <li class="divider"></li>
+                        <li><a tabindex="-1" href="../amelia/">Amelia</a></li>
+                        <li><a tabindex="-1" href="../cerulean/">Cerulean</a></li>
+                        <li><a tabindex="-1" href="../cosmo/">Cosmo</a></li>
+                        <li><a tabindex="-1" href="../cyborg/">Cyborg</a></li>
+                        <li><a tabindex="-1" href="../flatly/">Flatly</a></li>
+                        <li><a tabindex="-1" href="../journal/">Journal</a></li>
+                        <li><a tabindex="-1" href="../readable/">Readable</a></li>
+                        <li><a tabindex="-1" href="../simplex/">Simplex</a></li>
+                        <li><a tabindex="-1" href="../slate/">Slate</a></li>
+                        <li><a tabindex="-1" href="../spacelab/">Spacelab</a></li>
+                        <li><a tabindex="-1" href="../united/">United</a></li>
+                        <li><a tabindex="-1" href="../yeti/">Yeti</a></li>
+                      </ul>
+                    </li>
+                    <li>
+                      <a href="../help/">Help</a>
+                    </li>
+                    <li>
+                      <a href="http://news.bootswatch.com">Blog</a>
+                    </li>
+                    <li class="dropdown">
+                      <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="download">Download <span class="caret"></span></a>
+                      <ul class="dropdown-menu" aria-labelledby="download">
+                        <li><a tabindex="-1" href="./bootstrap.min.css">bootstrap.min.css</a></li>
+                        <li><a tabindex="-1" href="./bootstrap.css">bootstrap.css</a></li>
+                        <li class="divider"></li>
+                        <li><a tabindex="-1" href="./variables.less">variables.less</a></li>
+                        <li><a tabindex="-1" href="./bootswatch.less">bootswatch.less</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+
+                  <ul class="nav navbar-nav navbar-right">
+                    <li><a href="http://builtwithbootstrap.com/" target="_blank">Built With Bootstrap</a></li>
+                    <li><a href="https://wrapbootstrap.com/?ref=bsw" target="_blank">WrapBootstrap</a></li>
+                  </ul>
+
+                </div>
+              </div>
+            </div>
+        </header>
+        <div class="container">
+            <div data-ng-include="'/ng/C9App/views/shell.html'"></div>
+        </div>
+        <footer>
+        </footer>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular-route.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular-animate.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.1/angular-sanitize.min.js"></script>
+
+        <script src="/ng/GoogleFeedsApp/GoogleFeedsApp.js"></script>
+        <script src="/ng/C9App/C9App.js"></script>
+        <script src="/ng/C9App/C9App.Config.js"></script>
+        <script src="/ng/C9App/controllers/RootShellController.js"></script>
+        <script src="/ng/C9App/controllers/DashboardController.js"></script>
+        <script src="/ng/C9App/controllers/PorgramsController.js"></script>
+
+        <script type="text/javascript">
+            google.load("feeds", "1");
+
+            google.setOnLoadCallback(function () {
+                angular.bootstrap(document.body, ['C9App']);
+            });
+        </script>       
     </body>
 </html>

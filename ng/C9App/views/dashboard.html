@@ -1,0 +1,68 @@
+<div ng-controller="DashboardController as vm">  
+    <div data-ng-include="'/ng/C9App/views/TopBar.html'"></div>
+    <div data-ng-include="'/ng/C9App/views/MenuBar.html'"></div>
+    <div class="row">
+        <div class="col-lg-12">
+        <h2 id="type-blockquotes">What is Channel9?</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+        <blockquote>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+            <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
+        </blockquote>
+        </div>
+        <div class="col-lg-6">
+        <blockquote class="pull-right">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+            <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
+        </blockquote>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+        <h2 id="type-blockquotes">Shows</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-9">
+        <blockquote>
+            <div class="row">
+                <div class="col-lg-4" ng-repeat="show in vm.Shows">
+                    <a href="#/c9feeds" ng-click="vm.L2Nav(show)" ><img  ng-src="{{show.imageUrl}}" title="{{show.title}}" /></a>
+                </div>
+            </div>
+        </blockquote>
+        </div>
+        <div class="col-lg-3">
+        <blockquote class="pull-right">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+            <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
+        </blockquote>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+        <h2 id="type-blockquotes">Series</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-9">
+        <blockquote>
+            <div class="row">
+                <div class="col-lg-4" ng-repeat="ser in vm.Series">
+                    <a href="#/c9feeds" ng-click="vm.L2Nav(ser)" ><img  ng-src="{{ser.imageUrl}}" title="{{ser.title}}" /></a>
+                </div>
+            </div>
+        </blockquote>
+        </div>
+        <div class="col-lg-3">
+        <blockquote class="pull-right">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+            <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
+        </blockquote>
+        </div>
+    </div>
+    <div data-ng-include="'/ng/C9App/views/MenuBar.html'"></div>
+</div>

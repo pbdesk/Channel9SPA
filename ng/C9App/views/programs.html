@@ -1,0 +1,31 @@
+<div data-ng-controller="ProgramsController as vm">
+    <div data-ng-include="'/ng/C9App/views/TopBar.html'"></div>
+    <div class="row">
+        <div class="col-md-4">
+            &nbsp;
+        </div>        
+        <div class="col-md-4 alignc" >
+            <h2><span class="label label-primary" style="width: 100%">
+                &nbsp;&nbsp;&nbsp;{{vm.title}}&nbsp;&nbsp;&nbsp;
+            </span></h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            &nbsp;
+        </div>        
+        <div class="col-md-4 alignc" >
+            <form class="form-inline" role="form">
+                <div class="input-group">                    
+                    <input type="text" class="form-control" ng-model="filterQuery">
+                    <span class="input-group-addon"><i class="fa fa-filter"></i></span>
+                </div>
+           </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3" ng-repeat="d in vm.data | filter: {title : filterQuery}" style="padding:10px; text-align:center">
+            <a href="#/c9feeds" ng-click="vm.L2Nav(d)"><img ng-src="{{d.imageUrl}}" title="{{d.title}}" /></a>
+        </div>
+    </div>
+</div>

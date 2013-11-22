@@ -1,0 +1,14 @@
+body {
+    padding-top: 60px;
+}
+
+.alignc{
+    text-align: center !important;
+}
+
+.alignj{
+    text-align: justify !important;
+}
+.imgHover:hover{
+    border: 1px solid #000;
+}
