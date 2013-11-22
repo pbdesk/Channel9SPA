@@ -10,15 +10,13 @@
         
         var vm = this;
 
-        vm.title = $rootScope.CurrentL1;
+        vm.L1Title = $rootScope.CurrentL1;
 
-   
-        // Bindable properties and functions are placed on vm.
-        vm.activate = activate;
-        if (vm.title === 'Shows') {
+
+        if (vm.L1Title === 'Shows') {
             vm.data = $rootScope.shows.items;
         }
-        else if (vm.title === 'Series') {
+        else if (vm.L1Title === 'Series') {
             vm.data = $rootScope.series.items;
             
         }
@@ -26,9 +24,8 @@
         vm.L1Nav = L1Nav;
         vm.L2Nav = L2Nav;
 
-        function activate() {
-        }
-
+   
+        //#region Internal Methods 
         function L1Nav(selectedOption) {
             $rootScope.CurrentL1 = selectedOption;
             if ($rootScope.CurrentL1 !== 'Recent') {
@@ -39,7 +36,7 @@
         function L2Nav(selectedL2Option) {
             $rootScope.CurrentL2 = selectedL2Option;
         }
-        //#region Internal Methods        
+               
 
         //#endregion
     }

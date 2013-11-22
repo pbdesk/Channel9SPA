@@ -6,8 +6,16 @@
         </div>        
         <div class="col-md-4 alignc" >
             <h2><span class="label label-primary" style="width: 100%">
-                &nbsp;&nbsp;&nbsp;{{vm.title}}&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;{{vm.L1Title}}&nbsp;&nbsp;&nbsp;
             </span></h2>
+        </div>
+        <div class="col-md-4">
+            <div class="btn btn-group pull-right">
+                <a class="btn btn-warning" href="#/c9programs"><i class="fa fa-chevron-left fa-lg"></i></a>
+                <a class="btn btn-success" href="#/c9programs" ng-click="vm.L1Nav('Shows')" ng-if="vm.L1Title !== 'Shows'"><span class="bold">Shows</span></a>
+                <a class="btn btn-primary" href="#/c9programs" ng-click="vm.L1Nav('Series')" ng-if="vm.L1Title !== 'Series'"><span class="bold">Series</span></a>
+                <a class="btn btn-danger" href="#/c9feeds" ng-click="vm.L1Nav('Recent')" ng-if="vm.L1Title !== 'Recent'"><span class="bold">Recent</span></a>
+            </div>
         </div>
     </div>
     <div class="row">

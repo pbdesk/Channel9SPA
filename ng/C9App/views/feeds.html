@@ -1,0 +1,30 @@
+<div data-ng-controller="FeedsController as vm">
+    <div data-ng-include="'ng/C9App/views/TopBar.html'"></div>
+    <div class="row">
+        <div class="col-md-3">
+            &nbsp;
+        </div>
+        <div class="col-md-6 alignc">
+            <h3>                
+                <span class="label label-primary alignc">{{vm.L2Title}}</span>                
+            </h3>
+        </div>
+        <div class="col-md-3">
+            <div class="btn btn-group pull-right">
+                <a class="btn btn-warning" href="#/c9programs"><i class="fa fa-chevron-left fa-lg"></i></a>
+                <a class="btn btn-success" href="#/c9programs" ng-click="vm.L1Nav('Shows')" ng-if="vm.L1Title !== 'Shows'"><span class="bold">Shows</span></a>
+                <a class="btn btn-primary" href="#/c9programs" ng-click="vm.L1Nav('Series')" ng-if="vm.L1Title !== 'Series'"><span class="bold">Series</span></a>
+                <a class="btn btn-danger" href="#/c9feeds" ng-click="vm.L1Nav('Recent')" ng-if="vm.L1Title !== 'Recent'"><span class="bold">Recent</span></a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3" ng-repeat="d in vm.Data.entries" style="padding:10px; text-align:center">
+            {{d.pubDate}}
+            <br />
+            <a href="#/Item" ng-click="vm.ItemSelected(d)"><img ng-src="{{d.Thumbnail2}}" title="{{d.title}}" /></a>
+            <br />
+            {{d.title}}
+        </div>
+    </div>
+</div>
