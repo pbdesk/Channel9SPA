@@ -11,7 +11,7 @@ var C9AppName = 'C9App';
     //defining routes
     C9App.config(['$routeProvider', function ($routeProvider) {
 
-        var c9AppViewPath = '/ng/C9App/views/';
+        var c9AppViewPath = 'ng/C9App/views/';
         $routeProvider
             .when('/', { templateUrl: c9AppViewPath + 'dashboard.html' })
             .when('/c9programs', { templateUrl: c9AppViewPath + 'programs.html' })
