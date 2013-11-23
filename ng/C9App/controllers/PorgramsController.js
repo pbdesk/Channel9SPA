@@ -10,34 +10,33 @@
         
         var vm = this;
 
-        vm.L1Title = $rootScope.CurrentL1;
+        vm.Title = $rootScope.CurrentProgramTypeName;
 
 
-        if (vm.L1Title === 'Shows') {
+        if (vm.Title === 'Shows') {
             vm.data = $rootScope.shows.items;
         }
-        else if (vm.L1Title === 'Series') {
+        else if (vm.Title === 'Series') {
             vm.data = $rootScope.series.items;
             
         }
-    
-        vm.L1Nav = L1Nav;
-        vm.L2Nav = L2Nav;
 
-   
-        //#region Internal Methods 
-        function L1Nav(selectedOption) {
-            $rootScope.CurrentL1 = selectedOption;
-            if ($rootScope.CurrentL1 !== 'Recent') {
+
+        vm.NavigateTo = NavigateTo;
+
+        //#region Internal Methods        
+        function NavigateTo(strProgramType, objProgram) {
+            $rootScope.CurrentProgramTypeName = strProgramType;
+            if (objProgram != null) {
+                $rootScope.CurrentProgramObj = objProgram;
+            }
+            if ($rootScope.CurrentProgramTypeName !== 'Recent') {
                 $route.reload();
             }
         }
-
-        function L2Nav(selectedL2Option) {
-            $rootScope.CurrentL2 = selectedL2Option;
-        }
-               
-
         //#endregion
+
+    
+       
     }
 })();

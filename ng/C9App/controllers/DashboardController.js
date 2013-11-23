@@ -10,16 +10,17 @@
 
         var vm = this;
 
-        vm.MainNav = MainNav;
-        vm.Shows = jQuery.grep($rootScope.shows.items, function( n, i ) { return ( i < 3 );});
-        vm.Series = jQuery.grep($rootScope.series.items, function( n, i ) { return ( i < 3 );}); 
+        vm.Shows = jQuery.grep($rootScope.shows.items, function (n, i) { return (i < 3); });
+        vm.Series = jQuery.grep($rootScope.series.items, function (n, i) { return (i < 3); });
 
-
-
+        vm.NavigateTo = NavigateTo;
 
         //#region Internal Methods        
-        function MainNav(selectedOption) {
-            $rootScope.CurrentL1 = selectedOption;
+        function NavigateTo(strProgramType, objProgram) {
+            $rootScope.CurrentProgramTypeName = strProgramType;
+            if (objProgram != null) {
+                $rootScope.CurrentProgramObj = objProgram;
+            }
         }
         //#endregion
     }

@@ -11,19 +11,15 @@
 
         var vm = this;
 
-        vm.L1Title = $rootScope.CurrentL1;
-
-
-        vm.L2Title = $rootScope.CurrentL2.title;
-
-
-        var subCatFoundArr = [];
+        vm.CurrentProgramTypeName = $rootScope.CurrentProgramTypeName
         var c9Object = {};
-        if ($rootScope.CurrentL1 === 'Shows' || $rootScope.CurrentL1 == 'Series') {
-            c9Object = $rootScope.CurrentL2;
+        if ($rootScope.CurrentProgramTypeName === 'Shows' || $rootScope.CurrentProgramTypeName == 'Series') {
+            c9Object = $rootScope.CurrentProgramObj;
+            vm.Title = c9Object.title;
         }
-        else if ($rootScope.CurrentL1 == 'Recent') {
+        else if ($rootScope.CurrentProgramTypeName == 'Recent') {
             c9Object = $rootScope.recent;
+            vm.Title = 'Latest on Channel9';
         }
         else {
             c9Object = null;
@@ -41,19 +37,26 @@
                 );
         }
 
-        //alert($rootScope.shows.items.length);
+         vm.NavigateTo = NavigateTo;
 
-        // Bindable properties and functions are placed on vm.
-        vm.activate = activate;
-        vm.ItemSelected = ItemSelected;
-        vm.title = 'C9SubCatController';
-     
-        vm.L1Nav = L1Nav;
-        //vm.L2Nav = L2Nav;
-
-        function activate() {
+        //#region Internal Methods        
+        function NavigateTo(strProgramType,  objProgram) {
+            $rootScope.CurrentProgramTypeName = strProgramType;
+            if (objProgram != null) {
+                $rootScope.CurrentProgramObj = objProgram;
+            }
+            if ($rootScope.CurrentProgramTypeName === 'Recent') {
+                $route.reload();
+            }
         }
+        //#endregion
 
+
+
+        vm.L2Nav = L2Nav;     
+        vm.L1Nav = L1Nav;
+
+        //#region Internal Methods
         function L1Nav(selectedOption) {
             $rootScope.CurrentL1 = selectedOption;
             if (selectedOption === 'Recent') {
@@ -62,15 +65,11 @@
             
         }
 
-        //function L2Nav(selectedL2Option) {
-        //    $rootScope.CurrentL2 = selectedL2Option;
-        //}
-
-        function ItemSelected(item) {
+        function L2Nav(item) {
             $rootScope.CurrentItem = item;
         }
 
-        //#region Internal Methods        
+        
 
         //#endregion
     }

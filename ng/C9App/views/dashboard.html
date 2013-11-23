@@ -1,68 +1,85 @@
 <div ng-controller="DashboardController as vm">  
     <div data-ng-include="'ng/C9App/views/TopBar.html'"></div>
-    <div data-ng-include="'ng/C9App/views/MenuBar.html'"></div>
+    <div class="row">
+        <div class="col-md-3">
+            &nbsp;
+        </div>
+        <div class="col-md-6 alignc">
+            <div class="btn btn-group">
+                <a class="btn btn-default btn-lg" href="#/c9programs" ng-click="vm.NavigateTo('Shows', null)"><span class="bold larger-font">Shows</span></a>
+                <a class="btn btn-success btn-lg" href="#/c9programs" ng-click="vm.NavigateTo('Series', null)"><span class="bold larger-font">Series</span></a>
+                <a class="btn btn-warning btn-lg" href="#/c9feeds" ng-click="vm.NavigateTo('Recent', null)"><span class="bold larger-font">Recent</span></a>
+            </div>
+        </div>
+        <div class="col-md-3">
+            &nbsp;
+        </div>
+    </div>
     <div class="row">
         <div class="col-lg-12">
         <h2 id="type-blockquotes">What is Channel9?</h2>
         </div>
     </div>
     <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-4">
         <blockquote>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-            <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
+            <img  src="http://channel9.msdn.com/styles/images/defaults/c9-220x165b.png" alt="TWC9" >
         </blockquote>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-8">
         <blockquote class="pull-right">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-            <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
+            <p class="alignj">Channel9 is a Microsoft community site. It has videos, discussions, podcasts, screencasts and interviews with Microsoft techies and the people behind their products and connects them with those who use them - mainly The Microsoft Developers.</p>
+            <small>Channel 9 Website: channel9.msdn.com</small>
         </blockquote>
         </div>
     </div>
     <div class="row">
         <div class="col-lg-12">
-        <h2 id="type-blockquotes">Shows</h2>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-9">
-        <blockquote>
-            <div class="row">
-                <div class="col-lg-4" ng-repeat="show in vm.Shows">
-                    <a href="#/c9feeds" ng-click="vm.L2Nav(show)" ><img  ng-src="{{show.imageUrl}}" title="{{show.title}}" /></a>
-                </div>
-            </div>
-        </blockquote>
-        </div>
-        <div class="col-lg-3">
-        <blockquote class="pull-right">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-            <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
-        </blockquote>
+        <h2 id="type-blockquotes"><small>Featured</small> | Shows</h2>
         </div>
     </div>
     <div class="row">
         <div class="col-lg-12">
-        <h2 id="type-blockquotes">Series</h2>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-9">
         <blockquote>
             <div class="row">
-                <div class="col-lg-4" ng-repeat="ser in vm.Series">
-                    <a href="#/c9feeds" ng-click="vm.L2Nav(ser)" ><img  ng-src="{{ser.imageUrl}}" title="{{ser.title}}" /></a>
+                <div class="col-lg-3" ng-repeat="show in vm.Shows">
+                    <a href="#/c9feeds" ng-click="vm.NavigateTo('Shows',show)" ><img  ng-src="{{show.imageUrl}}" title="{{show.title}}" /></a>
+                </div>
+                <div class="col-lg-3" style="text-align: center; padding-top: 60px" >
+                    <a href="#/c9programs" class="btn btn-danger" ng-click="vm.NavigateTo('Shows', null)">More Shows <i class="fa fa-angle-double-right"></i></a>
                 </div>
             </div>
         </blockquote>
         </div>
-        <div class="col-lg-3">
-        <blockquote class="pull-right">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-            <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
+        
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+        <h2 id="type-blockquotes"><small>Featured</small> | Series</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+        <blockquote>
+            <div class="row">
+                <div class="col-lg-3" ng-repeat="ser in vm.Series">
+                    <a href="#/c9feeds" ng-click="vm.NavigateTo('Series',ser)" ><img  ng-src="{{ser.imageUrl}}" title="{{ser.title}}" /></a>
+                </div>
+                <div class="col-lg-3" style="text-align: center; padding-top: 60px" >
+                    <a href="#/c9programs" class="btn btn-danger" ng-click="vm.NavigateTo('Series', null)">More Series <i class="fa fa-angle-double-right"></i></a>
+                </div>
+            </div>
         </blockquote>
         </div>
+        
     </div>
     <div data-ng-include="'ng/C9App/views/MenuBar.html'"></div>
+    <div class="row">
+        <div class="col-lg-12">
+        <blockquote >
+            <p><b>Disclaimer:</b> Purpose of this web application is just to demonstrate about building Single Page Application using AngularJS & Google Feeds API. Contents shows on this site are fetched via Google Feeds API using RSS feeds exposed by Channel9. More about Channel 9 at its <a href="http://channel9.msdn.com" target="_blank">website</a> & <a href="http://channel9.msdn.com/About" target="_blank">About page</a>.</p>
+            <small> Pinal Bhatt</small>
+        </blockquote>
+        </div>
+    </div>
 </div>
