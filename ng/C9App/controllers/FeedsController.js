@@ -5,7 +5,7 @@
 
     var controllerId = 'FeedsController';
     angular.module(C9AppName).controller(controllerId,
-        ['$rootScope', '$route','GoogleFeedsFactory',  FeedsController]);
+        ['$rootScope', '$route', 'GoogleFeedsFactory', FeedsController]);
 
     function FeedsController($rootScope, $route, GoogleFeedsFactory, $routeParams) {
 
@@ -37,13 +37,14 @@
                 );
         }
 
-         vm.NavigateTo = NavigateTo;
+        vm.NavigateTo = NavigateTo;
 
         //#region Internal Methods        
-        function NavigateTo(strProgramType,  objProgram) {
+        function NavigateTo(strProgramType, objProgram) {
             $rootScope.CurrentProgramTypeName = strProgramType;
             if (objProgram != null) {
                 $rootScope.CurrentProgramObj = objProgram;
+                return;
             }
             if ($rootScope.CurrentProgramTypeName === 'Recent') {
                 $route.reload();
@@ -51,26 +52,5 @@
         }
         //#endregion
 
-
-
-        vm.L2Nav = L2Nav;     
-        vm.L1Nav = L1Nav;
-
-        //#region Internal Methods
-        function L1Nav(selectedOption) {
-            $rootScope.CurrentL1 = selectedOption;
-            if (selectedOption === 'Recent') {
-                $route.reload();
-            }
-            
-        }
-
-        function L2Nav(item) {
-            $rootScope.CurrentItem = item;
-        }
-
-        
-
-        //#endregion
     }
 })();

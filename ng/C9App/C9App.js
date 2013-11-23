@@ -16,7 +16,7 @@ var C9AppName = 'C9App';
             .when('/', { templateUrl: c9AppViewPath + 'dashboard.html' })
             .when('/c9programs', { templateUrl: c9AppViewPath + 'programs.html' })
             .when('/c9feeds', { templateUrl: c9AppViewPath + 'feeds.html' })
-            .when('/c9feeditem', { templateUrl: c9AppViewPath + 'feeditem.html' })
+            .when('/c9feeditem', { templateUrl: c9AppViewPath + 'item.html' })
             .otherwise({ redirectTo: '/' });
     }]);
 })();

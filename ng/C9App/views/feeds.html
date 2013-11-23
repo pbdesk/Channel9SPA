@@ -22,7 +22,7 @@
         <div class="col-md-3" ng-repeat="d in vm.Data.entries" style="padding:10px; text-align:center">
             {{d.pubDate}}
             <br />
-            <a href="#/Item" ng-click="vm.NavigateTo(vm.CurrentProgramTypeName, d)"><img ng-src="{{d.Thumbnail2}}" title="{{d.title}}" /></a>
+            <a href="#/c9feeditem" ng-click="vm.NavigateTo(vm.CurrentProgramTypeName, d)"><img ng-src="{{d.Thumbnail2}}" title="{{d.title}}" /></a>
             <br />
             {{d.title}}
         </div>
