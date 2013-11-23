@@ -29,6 +29,9 @@
             GoogleFeedsFactory.GetFeeds(c9Object.rssUrl, c9Object.itemCount, 'c9').then(
                 function (result) {
                     vm.Data = result.feed;
+                    if ($rootScope.CurrentProgramTypeName == 'Series') {
+                        vm.Data.entries.reverse();
+                    }
                 },
                 function (error) {
                     //error
@@ -40,10 +43,13 @@
         vm.NavigateTo = NavigateTo;
 
         //#region Internal Methods        
-        function NavigateTo(strProgramType, objProgram) {
+        function NavigateTo(strProgramType, strProgramName, objProgram) {
             $rootScope.CurrentProgramTypeName = strProgramType;
+            if (strProgramName != null) {
+                $rootScope.CurrentProgramName = strProgramName;
+            }
             if (objProgram != null) {
-                $rootScope.CurrentProgramObj = objProgram;
+                $rootScope.CurrentProgramItem = objProgram;
                 return;
             }
             if ($rootScope.CurrentProgramTypeName === 'Recent') {

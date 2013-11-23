@@ -11,7 +11,7 @@
         </div>
         <div class="col-md-3">
             <div class="btn btn-group pull-right">
-                <a class="btn btn-warning" href="#/c9programs" ng-if="vm.CurrentProgramTypeName !== 'Recent'"><i class="fa fa-chevron-left fa-lg"></i></a>
+                <a class="btn btn-warning" href="#/c9feeds" ng-if="vm.CurrentProgramTypeName !== 'Recent'"><i class="fa fa-chevron-left fa-lg"></i></a>
                 <a class="btn btn-success" href="#/c9programs" ng-click="vm.NavigateTo('Shows',null,null)" ng-if="vm.CurrentProgramTypeName !== 'Shows'"><span class="bold">Shows</span></a>
                 <a class="btn btn-primary" href="#/c9programs" ng-click="vm.NavigateTo('Series', null, null)" ng-if="vm.CurrentProgramTypeName !== 'Series'"><span class="bold">Series</span></a>
                 <a class="btn btn-danger" href="#/c9feeds" ng-click="vm.NavigateTo('Recent', null, null)" ng-if="vm.CurrentProgramTypeName !== 'Recent'"><span class="bold">Recent</span></a>
@@ -22,7 +22,7 @@
         <div class="col-md-3" ng-repeat="d in vm.Data.entries" style="padding:10px; text-align:center">
             {{d.pubDate}}
             <br />
-            <a href="#/c9feeditem" ng-click="vm.NavigateTo(vm.CurrentProgramTypeName, d)"><img ng-src="{{d.Thumbnail2}}" title="{{d.title}}" /></a>
+            <a href="#/c9feeditem" ng-click="vm.NavigateTo(vm.CurrentProgramTypeName, vm.Title, d)"><img ng-src="{{d.Thumbnail2}}" title="{{d.title}}" /></a>
             <br />
             {{d.title}}
         </div>

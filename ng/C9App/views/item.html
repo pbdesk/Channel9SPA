@@ -1,4 +1,53 @@
 <div ng-controller="ItemController as vm">
-    Item.html
-    {{vm.current.title}}
+    <div data-ng-include="'ng/C9App/views/TopBar.html'"></div>
+    <div class="row">
+        <div class="col-md-3">
+            <div class="btn btn-group pull-right">
+                <a class="btn btn-warning" href="#/c9feeds"><i class="fa fa-chevron-left fa-lg"></i> Back</a>
+            </div>
+        </div>
+        <div class="col-md-6 alignc">
+            <h3>                
+                <span class="label label-primary alignc">{{vm.CurrentProgramName}}</span>                
+            </h3>
+        </div>
+        <div class="col-md-3">
+            <div class="btn btn-group pull-right">
+                <a class="btn btn-success" href="#/c9programs" ng-click="vm.NavigateTo('Shows',null,null)" ><span class="bold">Shows</span></a>
+                <a class="btn btn-primary" href="#/c9programs" ng-click="vm.NavigateTo('Series', null, null)" ><span class="bold">Series</span></a>
+                <a class="btn btn-danger" href="#/c9feeds" ng-click="vm.NavigateTo('Recent', null, null)" ><span class="bold">Recent</span></a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+        <blockquote style="padding-top: 0px">
+            <div class="row">
+                <h2 id="type-blockquotes">{{vm.CurrentProgramItem.title}} </h2>
+                <p>{{vm.CurrentProgramItem.pubDate}}</p>
+            </div>
+        </blockquote>
+        </div>
+        
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <img ng-src="{{vm.CurrentProgramItem.Thumbnail3}}" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <p>&nbsp;</p>
+            <div class="alignj" ng-bind-html="vm.CurrentProgramItem.content">                
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <p>&nbsp;</p>
+            <p>View on <a ng-href="{{vm.CurrentProgramItem.link}}" target="_blank">Channel9.msdn.com</a></p>
+            </div>
+        </div>
+    </div>
+   
 </div>

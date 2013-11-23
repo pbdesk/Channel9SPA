@@ -3,28 +3,17 @@
 (function () {
     'use strict';
 
-    // Controller name is handy for logging
-    var controllerId = 'C9ItemController';
+    var controllerId = 'ItemController';
 
-    // Define the controller on the module.
-    // Inject the dependencies. 
-    // Point to the controller definition function.
-    angular.module(C9AppName).controller(controllerId,
-        ['$rootScope', C9ItemController]);
+    angular.module(C9AppName).controller(controllerId, ['$rootScope', ItemController]);
 
-    function C9ItemController($rootScope) {
-        // Using 'Controller As' syntax, so we assign this to the vm variable (for viewmodel).
-        var vm = this;
-
-        vm.current = $rootScope.CurrentItem;
+    function ItemController($rootScope) {
         
-        // Bindable properties and functions are placed on vm.
-        vm.activate = activate;
-        vm.title = 'C9ItemController';
-
-        function activate() {
-        }
-
+        var vm = this;
+        vm.CurrentProgramTypeName = $rootScope.CurrentProgramTypeName
+        vm.CurrentProgramName = $rootScope.CurrentProgramName
+        vm.CurrentProgramItem = $rootScope.CurrentProgramItem;
+        
         //#region Internal Methods        
 
         //#endregion
