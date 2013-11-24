@@ -35,7 +35,7 @@
                 },
                 function (error) {
                     //error
-                    alert("error");
+                    alert("Error loading Channel9 Feeds Via Google Feed API, Please try again...");
                 }
                 );
         }

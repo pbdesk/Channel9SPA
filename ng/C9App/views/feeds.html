@@ -19,12 +19,26 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-3" ng-repeat="d in vm.Data.entries" style="padding:10px; text-align:center">
-            {{d.pubDate}}
+       <!--<div class="col-xs-6" ng-repeat="d in vm.Data.entries" style="padding:10px; text-align:center">
+            <div class="row">
+                <div class="col-xs-6">
+                    <a href="#/c9feeditem" ng-click="vm.NavigateTo(vm.CurrentProgramTypeName, vm.Title, d)"><img ng-src="{{d.Thumbnail2}}" title="{{d.title}}" /></a>
+                </div>
+                <div class="col-xs-6">
+                    {{d.title}}
+                    <br/>
+                    {{d.pubDate}}
+                </div>
+            </div>
+        </div> -->
+        <div class="col-md-3" ng-repeat="d in vm.Data.entries" style="padding:10px;">
+            <span><i class="fa fa-calendar"></i> {{d.pubDate}}</span>
             <br />
-            <a href="#/c9feeditem" ng-click="vm.NavigateTo(vm.CurrentProgramTypeName, vm.Title, d)"><img ng-src="{{d.Thumbnail2}}" title="{{d.title}}" /></a>
+            <a href="#/c9feeditem" ng-click="vm.NavigateTo(vm.CurrentProgramTypeName, vm.Title, d)">
+                <img ng-src="{{d.Thumbnail2}}" title="{{d.title}}" class="img-thumbnail" style="width:228px" />
+            </a>
             <br />
-            {{d.title}}
+            <p class="alignj" style="width: 228px" >{{d.title}}</p>
         </div>
     </div>
 </div>
