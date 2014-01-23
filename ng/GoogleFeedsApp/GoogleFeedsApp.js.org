@@ -1,78 +1,81 @@
-var GoogleFeeds;
-(function (GoogleFeeds) {
+﻿var GoogleFeedsAppName = 'GoogleFeedsApp';
+(function () {
     'use strict';
 
-    var AppName = 'GoogleFeedApp';
-    var GoogleFeedApp = angular.module('GoogleFeedApp', []).factory('GoogleFeedsFactory', ['$q', GoogleFeedsFactory]);
+    // Module name is handy for logging
+    var id = 'GoogleFeedsApp';
 
-    var GoogleFeedsFactory = (function () {
-        function GoogleFeedsFactory($q) {
-            this.$qq = $q;
-            this.MIXED_FORMAT = 'json_xml';
-        }
-        GoogleFeedsFactory.prototype.GetFeeds = function (rssUrl, itemCount, feedType) {
-            var _this = this;
-            var d = this.$qq.defer();
+    // Create the module and define its dependencies.
+    var GoogleFeedsApp = angular.module('GoogleFeedsApp', [ ]);
 
-            var feed = new google.feeds.feed(rssUrl);
+    GoogleFeedsApp.factory('GoogleFeedsFactory', ['$q', GoogleFeedsFactory]);
+
+    function GoogleFeedsFactory($q) {
+        // Define the functions and properties to reveal.
+        var service = {
+            GetFeeds: getData
+        };
+
+        return service;
+
+        function getData(rssUrl, itemCount, feedType) {
+            var d = $q.defer();
+
+            var feed = new google.feeds.Feed(rssUrl);
             feed.setNumEntries(itemCount);
-            feed.setResultFormat(this.MIXED_FORMAT);
+            feed.setResultFormat(google.feeds.Feed.MIXED_FORMAT);
             feed.includeHistoricalEntries();
             feed.load(function (result) {
                 if (!result.error) {
                     if (feedType === 'c9') {
-                        _this.ResolveRssMedia(result);
+                        ResolveRssMedia(result);
                     }
                     d.resolve(result);
                 }
+                else {
+                    d.reject(result.error);
+                }
             });
-        };
+            return d.promise;
+        }
 
-        GoogleFeedsFactory.prototype.ResolveRssMedia = function (result) {
+        function ResolveRssMedia(result) {
+
             for (var i in result.feed.entries) {
-                jQuery(result.feed.entries[i].xmlNode).find("media\\:thumbnail, thumbnail").each(function () {
-                    var current = jQuery(this);
-                    if (current.attr("width") == "100")
-                        result.feed.entries[i].Thumbnail1 = current.attr("url");
-                    if (current.attr("width") == "220")
-                        result.feed.entries[i].Thumbnail2 = current.attr("url");
-                    if (current.attr("width") == "512")
-                        result.feed.entries[i].Thumbnail3 = current.attr("url");
-                });
 
-                try  {
+                jQuery(result.feed.entries[i].xmlNode).find("media\\:thumbnail, thumbnail").each(
+                    function () {
+                        var current = jQuery(this);
+                        if (current.attr("width") == "100") result.feed.entries[i].Thumbnail1 = current.attr("url");
+                        if (current.attr("width") == "220") result.feed.entries[i].Thumbnail2 = current.attr("url");
+                        if (current.attr("width") == "512") result.feed.entries[i].Thumbnail3 = current.attr("url");
+                    });
+
+
+                try {
+
                     for (var j in result.feed.entries[i].mediaGroups[0].contents) {
                         var media = result.feed.entries[i].mediaGroups[0].contents[j];
                         switch (media.type) {
-                            case "audio/mp3":
-                                result.feed.entries[i].mp3 = media.url;
-                                break;
-                            case "video/webm":
-                                result.feed.entries[i].webm = media.url;
-                                break;
+                            case "audio/mp3": result.feed.entries[i].mp3 = media.url; break;
+                            case "video/webm": result.feed.entries[i].webm = media.url; break;
                             case "video/mp4":
-                                if (media.url.indexOf("_high.") > 0)
-                                    result.feed.entries[i].mp4high = media.url;
-                                else if (media.url.indexOf("_mid.") > 0)
-                                    result.feed.entries[i].mp4mid = media.url;
-                                else
-                                    result.feed.entries[i].mp4reg = media.url;
+                                if (media.url.indexOf("_high.") > 0) result.feed.entries[i].mp4high = media.url;
+                                else if (media.url.indexOf("_mid.") > 0) result.feed.entries[i].mp4mid = media.url;
+                                else result.feed.entries[i].mp4reg = media.url;
                                 break;
                         }
                     }
-                } catch (err) {
+
+                }
+                catch (err) {
                     continue;
                 }
-                if (typeof (result.feed.entries[i].Thumbnail1) == "undefined")
-                    result.feed.entries[i].Thumbnail1 = "";
-                if (typeof (result.feed.entries[i].Thumbnail2) == "undefined")
-                    result.feed.entries[i].Thumbnail2 = "";
-                if (typeof (result.feed.entries[i].Thumbnail3) == "undefined")
-                    result.feed.entries[i].Thumbnail3 = "";
-                if (typeof (result.feed.entries[i].webm) == "undefined")
-                    result.feed.entries[i].webm = "";
-                if (typeof (result.feed.entries[i].mp3) == "undefined")
-                    result.feed.entries[i].mp3 = "";
+                if (typeof (result.feed.entries[i].Thumbnail1) == "undefined") result.feed.entries[i].Thumbnail1 = "";
+                if (typeof (result.feed.entries[i].Thumbnail2) == "undefined") result.feed.entries[i].Thumbnail2 = "";
+                if (typeof (result.feed.entries[i].Thumbnail3) == "undefined") result.feed.entries[i].Thumbnail3 = "";
+                if (typeof (result.feed.entries[i].webm) == "undefined") result.feed.entries[i].webm = "";
+                if (typeof (result.feed.entries[i].mp3) == "undefined") result.feed.entries[i].mp3 = "";
 
                 if (typeof (result.feed.entries[i].mp4high) != "undefined")
                     result.feed.entries[i].mp4 = result.feed.entries[i].mp4high;
@@ -83,10 +86,17 @@ var GoogleFeeds;
                 else
                     result.feed.entries[i].mp4 = "";
 
-                result.feed.entries[i].pubDate = result.feed.entries[i].publishedDate.substring(0, 15);
+                result.feed.entries[i].pubDate = result.feed.entries[i].publishedDate.substring(0,15);
             }
-        };
-        return GoogleFeedsFactory;
-    })();
-    GoogleFeeds.GoogleFeedsFactory = GoogleFeedsFactory;
-})(GoogleFeeds || (GoogleFeeds = {}));
+
+        }
+
+
+    }
+
+
+
+
+
+
+})();
